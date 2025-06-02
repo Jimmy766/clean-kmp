@@ -41,6 +41,12 @@ kotlin {
             implementation(libs.navigation.compose)
             implementation(libs.room.runtime)
             implementation(libs.sqliteBundled)
+            implementation(project.dependencies.platform(libs.koin.bom))
+            implementation(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
+            api(libs.koin.annotations)
+
         }
 
         iosMain.dependencies {
@@ -82,6 +88,7 @@ android {
 dependencies {
     debugImplementation(compose.uiTooling)
     ksp(libs.room.compiler)
+    ksp(libs.koin.ksp.compiler)
 }
 
 room{
