@@ -17,6 +17,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 
 import kmptakehomeassignment.composeapp.generated.resources.Res
 import kmptakehomeassignment.composeapp.generated.resources.compose_multiplatform
+import com.bimm.takehomeassignmnent.domain.Greeting
 
 @Composable
 @Preview
