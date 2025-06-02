@@ -13,6 +13,15 @@ androidx-testExt = "1.2.1"
 composeMultiplatform = "1.8.0"
 junit = "4.13.2"
 kotlin = "2.1.21"
+coil = "3.2.0"
+ktor = "3.1.3"
+navigation-compose = "2.9.0-beta01"
+ksp = "2.1.21-2.0.1"
+room = "2.7.1"
+sqliteBundled = "2.5.0"
+koin = "4.0.4"
+koin-anotations = "2.0.0"
+koin-compiler = "2.0.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -26,6 +35,22 @@ androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayo
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
 androidx-lifecycle-viewmodel = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtimeCompose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+coil-compose = { group = "io.coil-kt.coil3", name="coil-compose", version.ref = "coil" }
+coil-network-ktor = { group = "io.coil-kt.coil3", name="coil-network-ktor3", version.ref = "coil" }
+ktor-client-okhttp = { group = "io.ktor", name = "ktor-client-android", version.ref = "ktor" }
+ktor-client-darwin = { group = "io.ktor", name = "ktor-client-darwin", version.ref = "ktor" }
+navigation-compose = { group = "org.jetbrains.androidx.navigation", name="navigation-compose", version.ref = "navigation-compose" }
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+sqliteBundled = { group = "androidx.sqlite", name = "sqlite-bundled", version.ref = "sqliteBundled" }
+koin-bom = { group = "io.insert-koin", name = "koin-bom", version.ref = "koin" }
+koin-android = { group = "io.insert-koin", name = "koin-android"}
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose"}
+koin-annotations = { group = "io.insert-koin", name = "koin-annotations", version.ref = "koin-anotations" }
+koin-ksp-compiler = { group = "io.insert-koin", name = "koin-ksp-compiler", version.ref = "koin-compiler" }
+koin-core = { group = "io.insert-koin", name = "koin-core" }
+koin-compose = { group = "io.insert-koin", name = "koin-compose" }
+koin-compose-viewmodel = { group = "io.insert-koin", name = "koin-compose-viewmodel" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -33,3 +58,5 @@ androidLibrary = { id = "com.android.library", version.ref = "agp" }
 composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+room = { id = "androidx.room", version.ref = "room" }
