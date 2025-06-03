@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
@@ -58,7 +59,7 @@ kotlin {
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
             api(libs.koin.annotations)
-
+            implementation(libs.kotlin.serialization.json)
         }
 
         iosMain.dependencies {

@@ -23,6 +23,7 @@ koin = "4.0.4"
 koin-anotations = "2.0.0"
 koin-compiler = "2.0.0"
 materialIcons = "1.7.3"
+kotlin-serialization = "1.8.1"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -53,6 +54,7 @@ koin-core = { group = "io.insert-koin", name = "koin-core" }
 koin-compose = { group = "io.insert-koin", name = "koin-compose" }
 koin-compose-viewmodel = { group = "io.insert-koin", name = "koin-compose-viewmodel" }
 material-icons-extended = { group = "org.jetbrains.compose.material", name = "material-icons-extended", version.ref = "materialIcons" }
+kotlin-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlin-serialization" }
 
 
 [plugins]
@@ -63,3 +65,4 @@ composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "k
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 room = { id = "androidx.room", version.ref = "room" }
+kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

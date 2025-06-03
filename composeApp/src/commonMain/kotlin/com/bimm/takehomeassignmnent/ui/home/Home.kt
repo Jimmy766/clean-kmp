@@ -1,6 +1,7 @@
 package com.bimm.takehomeassignmnent.ui.home
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -25,7 +26,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Home(){
+fun Home(onClick: (String) -> Unit) {
   val scroller = TopAppBarDefaults.pinnedScrollBehavior()
   DefaultLayout {
     Scaffold(
@@ -43,7 +44,7 @@ fun Home(){
         modifier = Modifier.padding(padding)
       ) {
         items(items = stores, key = { it.id }) { store ->
-          ShopItem(shop = store)
+          ShopItem(shop = store, onClick)
         }
       }
     }
@@ -51,12 +52,15 @@ fun Home(){
 }
 
 @Composable
-fun ShopItem(shop: Shop){
+fun ShopItem(shop: Shop, onClick: (String) -> Unit){
   Column {
     Box(
       modifier = Modifier.fillMaxWidth()
         .clip(MaterialTheme.shapes.medium)
         .background(MaterialTheme.colorScheme.primary)
+        .clickable {
+          onClick(shop.name)
+        }
     ){
       Row(
         modifier = Modifier.padding(8.dp),
