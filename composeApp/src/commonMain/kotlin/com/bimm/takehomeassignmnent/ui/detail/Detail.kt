@@ -32,12 +32,12 @@ import com.bimm.takehomeassignmnent.ui.layout.DefaultLayout
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Detail() {
+fun Detail(name: String, onBack: () -> Unit) {
   val shop = stores.random()
   val scroller = TopAppBarDefaults.pinnedScrollBehavior()
   DefaultLayout {
     Scaffold(
-      topBar = { DetailTopBar(shop, scroller) }
+      topBar = { DetailTopBar(shop, scroller, onBack) }
     ) {padding ->
       Column(
         modifier = Modifier.fillMaxSize()
@@ -79,12 +79,13 @@ fun Detail() {
 @OptIn(ExperimentalMaterial3Api::class)
 private fun DetailTopBar(
   shop: Shop,
-  scroller: TopAppBarScrollBehavior
+  scroller: TopAppBarScrollBehavior,
+  onBack: () -> Unit
 ) {
   TopAppBar(
     title = { Text(shop.name, style = MaterialTheme.typography.headlineMedium) },
     navigationIcon = {
-      IconButton(onClick = { /* TODO */ }) {
+      IconButton(onClick = { onBack() }) {
         Icon(imageVector = Icons.AutoMirrored.Default.ArrowBack, contentDescription = "Back")
       }
     },
