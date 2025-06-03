@@ -7,7 +7,7 @@ data class Shop(
   val stars: Int,
 )
 
-val stores = (1..10).map { i ->
+val stores = (1..50).map { i ->
     Shop(
         id = i,
         name = "Store $i",
