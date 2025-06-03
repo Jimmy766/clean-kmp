@@ -22,6 +22,7 @@ sqliteBundled = "2.5.0"
 koin = "4.0.4"
 koin-anotations = "2.0.0"
 koin-compiler = "2.0.0"
+materialIcons = "1.7.3"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -51,6 +52,8 @@ koin-ksp-compiler = { group = "io.insert-koin", name = "koin-ksp-compiler", vers
 koin-core = { group = "io.insert-koin", name = "koin-core" }
 koin-compose = { group = "io.insert-koin", name = "koin-compose" }
 koin-compose-viewmodel = { group = "io.insert-koin", name = "koin-compose-viewmodel" }
+material-icons-extended = { group = "org.jetbrains.compose.material", name = "material-icons-extended", version.ref = "materialIcons" }
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
