@@ -1,4 +1,3 @@
-import com.google.devtools.ksp.gradle.KspExtension
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -38,7 +37,6 @@ kotlin {
             implementation(libs.kotlin.serialization.json)
         }
         commonTest.dependencies {
-            implementation(libs.kotlin.test)
         }
     }
 }
@@ -59,10 +57,6 @@ android {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
 }
-
-//ksp {
-//    arg("room.schemaLocation", "$projectDir/schemas/${name}")
-//}
 
 room{
     schemaDirectory("$projectDir/schemas/${name}")
