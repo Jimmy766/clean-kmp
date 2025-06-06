@@ -1,3 +1,4 @@
+import com.google.devtools.ksp.gradle.KspExtension
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -6,6 +7,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
@@ -33,6 +35,7 @@ kotlin {
             implementation(libs.sqliteBundled)
             implementation(project.dependencies.platform(libs.koin.bom))
             implementation(libs.koin.core)
+            implementation(libs.kotlin.serialization.json)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -43,9 +46,6 @@ kotlin {
 dependencies {
     ksp(libs.koin.ksp.compiler)
     ksp(libs.room.compiler)
-}
-room {
-    schemaDirectory("$projectDir/schemas")
 }
 
 android {
@@ -58,4 +58,12 @@ android {
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
+}
+
+//ksp {
+//    arg("room.schemaLocation", "$projectDir/schemas/${name}")
+//}
+
+room{
+    schemaDirectory("$projectDir/schemas/${name}")
 }
