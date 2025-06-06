@@ -1,34 +1,96 @@
-# Bimm KMP Take Home Assignment - Base repo
+# Shop Stores app - Kotlin Multiplatform
 
-IMPORTANT: Don't create a PR to this repo with your solution.
+It demonstrates a simple mobile app that loads and displays shop/store data using shared business logic across Android and iOS.
 
-# Assignment instructions
-You should have received a separate description for your assignment. If you haven't, please contact the member of the hiring team you're in touch with.
+## 🚀 Features
 
-Also please verify you have received any files (JSON, xml, csv, txt, images, depending on the assignment) or any API addresses you assignment mentions. Those vary with the position you're applying to.
+- Shared Kotlin Multiplatform architecture
+- Room database integration (Android)
+- Jetpack Compose UI
+- Flow-based reactive data layer
+- Use Cases and Repository pattern
+- Dependency Injection with Koin
+- Coroutines and kotlinx.serialization
+- Unit tests with fake repository
 
+## 🧱 Architecture Overview
 
-# Assignment deliver instructions
-[Fork](https://github.com/reul/bimm-kmp-challenge-base/fork) or clone this repo and add the necessary code to complete your assignment, then email us with the link of the forked repo or to a zip or tarball file we can download and evaluate.
+This project follows a layered architecture inspired by Clean Architecture principles, structured inside the shared `Kotlin Multiplatform` module:
 
-It's very important that we can run the project and see it being executed ourselves, so don't make it dependent on any private repos or environment variables we might not have access to or, if you must, include an APK in the tarball or in a GitHub release in your fork. Don't forget to include or stage any other dependencies (like json files).
+```
+shared/
+└── src/
+    └── commonMain/
+        └── com.bimm.takehomeassignmnent/
+            ├── domain/
+            │   ├── models/                 # Pure business models (shared across platforms)
+            │   ├── repository/             # Abstract contracts (interfaces)
+            │   └── usecase/                # Application-specific business logic
+            └── data/
+                ├── repository/             # Repository implementations (depends on dataSource)
+                └── dataSource/
+                    ├── room/               # Local DB (Room - Android)
+                    └── json/               # JSON loading utilities (KMP-compliant)
+```
 
-## Build instructions
-This is a Kotlin Multiplatform project targeting Android, iOS.
+### 🔄 Flow of Data
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+1. **UI Layer (Android/iOS)** calls →  
+2. **UseCase Layer** uses →  
+3. **ShopStoresRepository (interface)** implemented by →  
+4. **ShopStoreRepositoryImpl**, which coordinates →  
+5. **Room / JSON data sources**
 
-* `/iosApp` contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform, 
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+---
 
-* `/shared` is for the code that will be shared between all targets in the project.
-  The most important subfolder is `commonMain`. If preferred, you can add code to the platform-specific folders here too.
+## 🛠️ Tech Stack
 
+| Layer              | Technology                                    |
+|--------------------|-----------------------------------------------|
+| UI (Android)       | Jetpack Compose                               |
+| UI (iOS)           | Swift UI (via KMP integration - expected)     |
+| Shared Logic       | Kotlin Multiplatform (KMP)                    |
+| Data Storage       | Room (Android)                                |
+| DI                 | Koin                                          |
+| Async / Reactive   | Kotlin Coroutines + Flow                      |
+| Serialization      | kotlinx.serialization                         |
+| Testing            | JUnit 4, Kotlin Test, kotlinx.coroutines.test |
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+## 🧪 Testing
 
+Unit tests are written using `kotlin.test` and run in the `commonTest` and `androidTest` source sets.
+
+To run all tests:
+
+```bash
+./gradlew allTests
+```
+
+To run Android instrumented tests:
+
+```bash
+./gradlew connectedAndroidTest
+```
+
+## 📄 How to Run
+
+### Android
+1. Open project in Android Studio.
+2. Run `composeApp` module on an emulator or device.
+
+### iOS
+> WIP – iOS target is built using KMP frameworks. Swift integration planned or in progress.
+
+## 📦 Requirements
+
+- Android Studio Hedgehog or later
+- Kotlin 1.9.x
+- Gradle 8.x
+- Xcode 15+ (for iOS builds)
+
+Deep Wiki [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Jimmy766/clean-kmp)
+
+## 🙋 Author
+
+**Jaison Villarroel**  
+Full-stack & Mobile Developer  
