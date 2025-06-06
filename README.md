@@ -79,7 +79,12 @@ To run Android instrumented tests:
 2. Run `composeApp` module on an emulator or device.
 
 ### iOS
-> WIP – iOS target is built using KMP frameworks. Swift integration planned or in progress.
+1. Build the shared KMP framework from Android Studio using:
+   ```bash
+   ./gradlew :shared:syncFramework
+   ```
+2. Open the `iosApp` project in Xcode.
+3. Run the app on a simulator or physical iOS device from Xcode.
 
 ## 📦 Requirements
 
