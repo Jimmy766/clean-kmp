@@ -1,9 +1,13 @@
+import com.google.devtools.ksp.gradle.KspExtension
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
@@ -27,12 +31,21 @@ kotlin {
     
     sourceSets {
         commonMain.dependencies {
-            // put your Multiplatform dependencies here
+            implementation(libs.room.runtime)
+            implementation(libs.sqliteBundled)
+            implementation(project.dependencies.platform(libs.koin.bom))
+            implementation(libs.koin.core)
+            implementation(libs.kotlin.serialization.json)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
     }
+}
+
+dependencies {
+    ksp(libs.koin.ksp.compiler)
+    ksp(libs.room.compiler)
 }
 
 android {
@@ -45,4 +58,12 @@ android {
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
+}
+
+//ksp {
+//    arg("room.schemaLocation", "$projectDir/schemas/${name}")
+//}
+
+room{
+    schemaDirectory("$projectDir/schemas/${name}")
 }
