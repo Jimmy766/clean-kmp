@@ -4,8 +4,6 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
-    alias(libs.plugins.ksp)
-    alias(libs.plugins.room)
 }
 
 kotlin {
@@ -29,23 +27,12 @@ kotlin {
     
     sourceSets {
         commonMain.dependencies {
-            implementation(libs.room.runtime)
-            implementation(libs.sqliteBundled)
-            implementation(project.dependencies.platform(libs.koin.bom))
-            implementation(libs.koin.core)
+            // put your Multiplatform dependencies here
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
     }
-}
-
-dependencies {
-    ksp(libs.koin.ksp.compiler)
-    ksp(libs.room.compiler)
-}
-room {
-    schemaDirectory("$projectDir/schemas")
 }
 
 android {
