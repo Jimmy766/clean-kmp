@@ -12,6 +12,9 @@ androidx-lifecycle = "2.9.0"
 androidx-testExt = "1.2.1"
 composeMultiplatform = "1.8.0"
 junit = "4.13.2"
+kotlinx-coroutines-test = "1.7.3"
+android-test = "1.5.0"
+room-test = "2.7.1"
 kotlin = "2.1.21"
 coil = "3.2.0"
 ktor = "3.1.3"
@@ -27,8 +30,12 @@ kotlin-serialization = "1.8.1"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+
 kotlin-testJunit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 junit = { module = "junit:junit", version.ref = "junit" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines-test" }
+room-test = { module = "androidx.room:room-testing", version.ref = "room-test" }
+android-test-core = { module = "androidx.test:core", version.ref = "android-test" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
 androidx-testExt-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-testExt" }
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidx-espresso" }

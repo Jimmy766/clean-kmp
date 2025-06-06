@@ -9,7 +9,6 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.ksp)
-//    alias(libs.plugins.room)
     alias(libs.plugins.kotlinSerialization)
 }
 
@@ -31,9 +30,9 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
-        
+
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
@@ -70,7 +69,10 @@ kotlin {
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+            implementation(libs.kotlinx.coroutines.test)
         }
+
+
     }
 }
 
@@ -84,6 +86,7 @@ android {
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     packaging {
         resources {
@@ -99,9 +102,19 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    sourceSets{
+        getByName("androidTest").java.srcDirs("src/androidTest/kotlin")
+    }
 }
 
 dependencies {
+    androidTestImplementation(libs.kotlin.test)
+    androidTestImplementation(libs.junit)
+    androidTestImplementation(libs.room.test)
+    androidTestImplementation(libs.kotlinx.coroutines.test)
+    androidTestImplementation(libs.android.test.core)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.testExt.junit)
     debugImplementation(compose.uiTooling)
     ksp(libs.koin.ksp.compiler)
 }
