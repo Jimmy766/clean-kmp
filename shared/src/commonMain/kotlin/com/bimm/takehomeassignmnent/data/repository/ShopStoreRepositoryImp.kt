@@ -14,7 +14,7 @@ class ShopStoreRepositoryImp(
   private val jsonService: ShopStoreJsonSource,
   private val roomDataBaseSource: ShopStoreRoomDataSource
 ): ShopStoresRepository{
-  override suspend fun getAll(): Flow<List<ShopStore>> {
+  override fun getAll(): Flow<List<ShopStore>> {
     val roomShops = roomDataBaseSource.getAll().onEach{ shops ->
       if(shops.isEmpty()){
         val formatted = jsonService.getAll().map { it.toEntity() }
@@ -24,7 +24,7 @@ class ShopStoreRepositoryImp(
     return roomShops.map { shops -> shops.map { it.toDomainModel() } }
   }
 
-  override suspend fun findById(id: Int): Flow<ShopStore> {
+  override fun findById(id: Int): Flow<ShopStore> {
     return roomDataBaseSource.getById(id).map { it.toDomainModel() }
   }
 
