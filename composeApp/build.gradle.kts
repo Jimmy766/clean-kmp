@@ -1,3 +1,4 @@
+import com.google.devtools.ksp.gradle.KspExtension
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -8,7 +9,7 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.room)
+//    alias(libs.plugins.room)
     alias(libs.plugins.kotlinSerialization)
 }
 
@@ -37,6 +38,7 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.ktor.client.okhttp)
+            implementation(libs.koin.android)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -46,19 +48,20 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
-            implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(libs.androidx.lifecycle.viewmodel)
+            implementation(libs.androidx.lifecycle.viewmodel.compose)
             implementation(projects.shared)
             implementation(libs.coil.compose)
             implementation(libs.coil.network.ktor)
             implementation(libs.navigation.compose)
             implementation(libs.room.runtime)
-            implementation(libs.sqliteBundled)
+//            implementation(libs.sqliteBundled)
             implementation(project.dependencies.platform(libs.koin.bom))
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
-            api(libs.koin.annotations)
+//            api(libs.koin.annotations)
             implementation(libs.kotlin.serialization.json)
         }
 
@@ -100,10 +103,5 @@ android {
 
 dependencies {
     debugImplementation(compose.uiTooling)
-    ksp(libs.room.compiler)
     ksp(libs.koin.ksp.compiler)
-}
-
-room{
-    schemaDirectory("$projectDir/schemas")
 }
